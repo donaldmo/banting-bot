@@ -7,7 +7,7 @@ const crypto = require('crypto');
 const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
-const uuid = require('uuid');
+const { uuid } = require('uuidv4');
 
 
 // Messenger API parameters
@@ -151,7 +151,7 @@ function receivedMessage(event) {
 	var message = event.message;
 
 	if (!sessionIds.has(senderID)) {
-		sessionIds.set(senderID, uuid.v1());
+		sessionIds.set(senderID, uuid());
 	}
 	//console.log("Received message for user %d and page %d at %d with message:", senderID, recipientID, timeOfMessage);
 	//console.log(JSON.stringify(message));
